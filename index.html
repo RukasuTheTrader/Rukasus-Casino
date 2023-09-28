@@ -12,7 +12,7 @@
     <nav id="game-nav">
         <ul>
             <li><a href="#diceJack">DiceJack</a></li>
-            <!-- Weitere Spiele hier auflisten -->
+            <!-- Liste hier andere Spiele auf -->
         </ul>
     </nav>
     <main>
@@ -26,7 +26,19 @@
             <p id="hostScore">Host: 0</p>
             <p id="jackBalance">Jack: 1000</p>
         </div>
-        <!-- Regeln und weitere Spiel-Elemente hier einfügen -->
+        <div id="rules">
+            <h2>Game Rules:</h2>
+            <ul>
+                <li>Game Rules:<br/>
+                1. Players start by placing a bet using the slider. The bet cannot exceed the Jack balance.<br/>
+                2. Press 'Roll' to roll a dice, the number rolled will be added to your score.<br/>
+                3. If the first roll is 4 or less, the host wins immediately.<br/>
+                4. Press 'Hold' to end your turn, and the host will roll until it beats your score or exceeds 100.<br/>
+                5. If the host's score exceeds 100 or is less than the player's score after holding, the player wins double the bet.<br/>
+                6. If the scores are tied after holding, it's a draw, and the player gets back the bet.<br/>
+                7. The game resets after a short pause when a round ends.</li><br/>
+            </ul>
+        </div>
     </main>
     <script src="scripts.js"></script>
 </body>
