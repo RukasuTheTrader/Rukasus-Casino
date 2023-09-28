@@ -1,8 +1,9 @@
 body {
-    background-image: url('./casino_background.jpg'); /* Wenn .avif nicht funktioniert, konvertiere es zu .jpg oder .png */
+    background-image: url('./casino_background.avif');
     background-size: cover;
     color: white;
     font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 header {
@@ -33,7 +34,7 @@ nav#game-nav ul li a {
 }
 
 main {
-    margin-left: 220px; /* Passt den Abstand an, um das feste Navigationsmenü zu berücksichtigen */
+    margin-left: 220px;
 }
 
 #diceJack {
@@ -43,4 +44,9 @@ main {
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px white;
+}
+
+button {
+    display: block;
+    margin: 0.5em 0;
 }
