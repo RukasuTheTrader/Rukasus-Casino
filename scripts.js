@@ -25,6 +25,7 @@ function initGame() {
     // Deducting the bet
     jackBalance -= bet;
     document.getElementById('jackBalance').textContent = "Jack: " + jackBalance;
+    betSlider.max = jackBalance; // Setzt das Maximum des Sliders auf den Jack Balance des Spielers
     playerScore = 0;
     hostScore = 0;
     betSlider.value = bet;
