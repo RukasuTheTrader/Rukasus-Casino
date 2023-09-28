@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+
 let bet = 10; // Der Einsatz des Spielers pro Spiel
 let betSlider = document.getElementById('betSlider');
 let betDisplay = document.getElementById('betDisplay');
@@ -13,7 +15,6 @@ betSlider.addEventListener('input', function() {
     }
 });
 
-
 let playerScore = 0;
 let hostScore = 0;
 let jackBalance = 1000;
@@ -21,11 +22,13 @@ let bet = 10; // Der Einsatz des Spielers pro Spiel
 
 // Initialisierung des Spiels
 function initGame() {
+    // Einsatz abziehen
+    jackBalance -= bet;
+    document.getElementById('jackBalance').textContent = "Jack: " + jackBalance;
     playerScore = 0;
     hostScore = 0;
     betSlider.value = bet;
     betDisplay.textContent = 'Einsatz: ' + bet;
-    // ... der Rest des Codes bleibt unverändert ...
     document.getElementById('playerScore').textContent = "Spieler: " + playerScore;
     document.getElementById('hostScore').textContent = "Host: " + hostScore;
     document.getElementById('jackBalance').textContent = "Jack: " + jackBalance;
@@ -74,9 +77,11 @@ function endGame(result) {
     document.getElementById('rollBtn').disabled = true;
     document.getElementById('holdBtn').disabled = true;
     if (result === true) {
-        jackBalance += bet * 2;
+    jackBalance += bet * 2; // Richtig: Gibt das Doppelte des Einsatzes zurück
+    }
     } else if (result === 'draw') {
-        jackBalance += bet;
+        jackBalance += bet; // Einsatz wurde bereits abgezogen, also nur + bet
+    }
     } else {
         jackBalance -= bet;
     }
@@ -87,3 +92,5 @@ function endGame(result) {
 
 // Spiel starten
 initGame();
+
+});
