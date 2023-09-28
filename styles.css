@@ -1,9 +1,8 @@
 body {
-    background-image: url('./casino_background.avif'); /* Update path if needed */
+    background-image: url('./casino_background.jpg'); /* Wenn .avif nicht funktioniert, konvertiere es zu .jpg oder .png */
     background-size: cover;
     color: white;
     font-family: 'Arial', sans-serif;
-    text-align: center;
 }
 
 header {
@@ -11,15 +10,30 @@ header {
     background-color: rgba(0,0,0,0.7);
 }
 
-nav ul {
+nav#game-nav ul {
     list-style-type: none;
     padding: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow-y: scroll;
 }
 
-nav ul li {
+nav#game-nav ul li {
     margin: 0.5em 0;
-    background-color: rgba(0,0,0,0.7);
     padding: 0.5em;
+}
+
+nav#game-nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin-left: 220px; /* Passt den Abstand an, um das feste Navigationsmenü zu berücksichtigen */
 }
 
 #diceJack {
@@ -29,24 +43,4 @@ nav ul li {
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px white;
-}
-
-button {
-    display: block;
-    margin: 0.5em 0;
-}
-
-#rules {
-    margin-top: 20px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(0,0,0,0.7);
-    padding: 10px;
-    border-radius: 10px;
-}
-
-#rules ul {
-    text-align: left;
-    padding-left: 20px;
 }
