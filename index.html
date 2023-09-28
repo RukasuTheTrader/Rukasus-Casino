@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Rukasu's Casino</title>
@@ -11,20 +11,31 @@
     </header>
     <nav>
         <ul>
-            <li>Spiel 1</li>
-            <li>Spiel 2</li>
-            <!--...-->
+            <li>Game 1</li>
+            <li>Game 2</li>
         </ul>
     </nav>
     <main>
         <div id="diceJack">
             <input type="range" min="10" max="1000" value="10" id="betSlider">
-            <p id="betDisplay">Einsatz: 10</p>
-            <button id="rollBtn">Würfeln</button>
-            <button id="holdBtn">Halten</button>
-            <p id="playerScore">Spieler: 0</p>
+            <p id="betDisplay">Bet: 10</p>
+            <button id="rollBtn">Roll</button>
+            <button id="holdBtn">Hold</button>
+            <p id="playerScore">Player: 0</p>
             <p id="hostScore">Host: 0</p>
             <p id="jackBalance">Jack: 1000</p>
+        </div>
+        <div id="rules">
+            <h2>Game Rules:</h2>
+            <ul>
+                <li>1. Players start by placing a bet using the slider. The bet cannot exceed the Jack balance.</li>
+                <li>2. Press 'Roll' to roll a dice, the number rolled will be added to your score.</li>
+                <li>3. If the first roll is 4 or less, the host wins immediately.</li>
+                <li>4. Press 'Hold' to end your turn, and the host will roll until it beats your score or exceeds 100.</li>
+                <li>5. If the host's score exceeds 100 or is less than the player's score after holding, the player wins double the bet.</li>
+                <li>6. If the scores are tied after holding, it's a draw, and the player gets back the bet.</li>
+                <li>7. The game resets after a short pause when a round ends.</li>
+            </ul>
         </div>
     </main>
     <script src="scripts.js"></script>
