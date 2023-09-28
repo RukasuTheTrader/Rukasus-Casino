@@ -8,7 +8,7 @@ betSlider.addEventListener('input', function() {
     let betValue = parseInt(betSlider.value, 10);
     if (betValue > jackBalance) {
         alert('Your bet cannot be higher than your Jack balance!');
-        betSlider.value = bet;
+        betSlider.value = jackBalance;
     } else {
         bet = betValue;
         betDisplay.textContent = 'Bet: ' + bet;
