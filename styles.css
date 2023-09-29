@@ -8,6 +8,10 @@ body {
     padding: 0;
 }
 
+background-image {
+    height: 100vh;
+}
+
 #jackCurrency {
     position: fixed;
     top: 10px;
