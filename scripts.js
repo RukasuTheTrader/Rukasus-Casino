@@ -2,31 +2,31 @@ let playerJack = 1000;
 let playerScore = 0;
 let hostScore = 0;
 
-document.getElementById('bet').addEventListener('input', function (e) {
-    document.getElementById('betNumber').value = e.target.value;
+document.addEventListener('DOMContentLoaded', (event) => {
+    let betSlider = document.getElementById('bet');
+    let betNumber = document.getElementById('betNumber');
+    
+    betSlider.addEventListener('input', function (e) {
+        betNumber.value = e.target.value;
+    });
+
+    betNumber.addEventListener('input', function (e) {
+        betSlider.value = e.target.value;
+    });
+
+    document.getElementById('startButton').addEventListener('click', startGame); 
+    document.getElementById('reset').addEventListener('click', resetGame);
+
+    updateBetLimits(); 
 });
-
-document.getElementById('betNumber').addEventListener('input', function (e) {
-    document.getElementById('bet').value = e.target.value;
-});
-
-document.getElementById('startButton').addEventListener('click', startGame); // Event-Listener für den Start-Button
-document.getElementById('reset').addEventListener('click', resetGame); // Event-Listener für den Reset-Button
-
-function loadGame(gameId) {
-    document.querySelector('.game').classList.add('hidden');
-    document.getElementById(gameId).classList.remove('hidden');
-}
 
 function startGame() {
-    let betSlider = document.getElementById('bet'); // Zugriff auf den Slider
-    betSlider.min = 10; // Setzen des minimalen Wertes
-    betSlider.max = playerJack; // Setzen des maximalen Wertes
     let bet = parseInt(document.getElementById('betNumber').value);
-    if (playerJack < bet || bet < 10) { // Überprüfung ob der Einsatz gültig ist
+    if (isNaN(bet) || playerJack < bet || bet < 10) {
         alert('Invalid bet!');
         return;
     }
+
     playerJack -= bet;
     updateJackDisplay();
     document.getElementById('playerArea').classList.remove('hidden');
@@ -79,8 +79,29 @@ function resetGame() {
 
 function updateJackDisplay() {
     document.getElementById('jackAmount').innerText = playerJack.toLocaleString('en-US');
-    let betSlider = document.getElementById('bet'); // Zugriff auf den Slider
-    betSlider.max = playerJack; // Aktualisierung des maximalen Wertes des Sliders
-    if (playerJack < 10) betSlider.disabled = true; // Deaktivieren des Sliders, wenn der Spieler weniger als 10 Jack hat
-    else betSlider.disabled = false; // Aktivieren des Sliders, wenn der Spieler 10 oder mehr Jack hat
+    updateBetLimits(); // rufe updateBetLimits auf, anstatt den betSlider hier zu aktualisieren
+}
+
+function updateBetLimits() {
+    let betSlider = document.getElementById('bet');
+    let betNumber = document.getElementById('betNumber');
+
+    betSlider.max = playerJack;
+    betNumber.max = playerJack;
+
+    if (playerJack < 10) {
+        betSlider.disabled = true;
+        betNumber.disabled = true;
+    } else {
+        betSlider.disabled = false;
+        betNumber.disabled = false;
+        // Sicherstellen, dass der Einsatz innerhalb der gültigen Grenzwerte liegt
+        if (betSlider.value < 10) {
+            betSlider.value = 10;
+            betNumber.value = 10;
+        } else if (betSlider.value > playerJack) {
+            betSlider.value = playerJack;
+            betNumber.value = playerJack;
+        }
+    }
 }
