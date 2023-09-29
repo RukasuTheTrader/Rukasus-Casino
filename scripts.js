@@ -10,6 +10,9 @@ document.getElementById('betNumber').addEventListener('input', function (e) {
     document.getElementById('bet').value = e.target.value;
 });
 
+document.getElementById('startButton').addEventListener('click', startGame); // Event-Listener für den Start-Button
+document.getElementById('reset').addEventListener('click', resetGame); // Event-Listener für den Reset-Button
+
 function loadGame(gameId) {
     document.querySelector('.game').classList.add('hidden');
     document.getElementById(gameId).classList.remove('hidden');
@@ -21,10 +24,14 @@ function startGame() {
         alert('Insufficient Jacks!');
         return;
     }
-    playerJack -= bet; // Bet is deducted at the start of the game.
+    playerJack -= bet;
     updateJackDisplay();
-    document.getElementById('playerArea').classList.remove('hidden'); // Show roll and hold buttons
-    document.getElementById('startButton').classList.add('hidden'); // Hide the start button
+    document.getElementById('playerArea').classList.remove('hidden');
+    document.getElementById('startButton').classList.add('hidden');
+}
+
+// Der Rest des Codes bleibt unverändert
+
 }
 
 function rollDice() {
