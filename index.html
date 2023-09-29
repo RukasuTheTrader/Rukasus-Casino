@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Rukasu's Casino</title>
@@ -11,11 +11,12 @@
     <div id="gameList">
         <ul>
             <li onclick="loadGame('diceJack')">DiceJack</li>
+            <!-- Here, you can add other games when they are available -->
         </ul>
     </div>
     <div id="gameArea">
         <div id="diceJack" class="game">
-            <label for="bet">Einsatz:</label>
+            <label for="bet">Bet:</label>
             <input type="range" id="bet" min="10" max="1000" value="10" step="5">
             <input type="number" id="betNumber" value="10" min="10">
             <button onclick="startGame()">Start</button>
@@ -27,7 +28,7 @@
             <div id="hostArea" class="hidden">
                 <p id="hostScore">0</p>
             </div>
-            <button id="reset" class="hidden" onclick="resetGame()">Zurücksetzen</button>
+            <button id="reset" class="hidden" onclick="resetGame()">Reset</button>
         </div>
     </div>
 </div>
