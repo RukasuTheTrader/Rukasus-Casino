@@ -1,37 +1,37 @@
-let playerJack = 1000;
-let playerScore = 0;
-let hostScore = 0;
+    let playerJack = 1000;
+    let playerScore = 0;
+    let hostScore = 0;
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    let betSlider = document.getElementById('bet');
-    let betNumber = document.getElementById('betNumber');
-    
-    betSlider.addEventListener('input', function (e) {
-        betNumber.value = e.target.value;
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let betSlider = document.getElementById('bet');
+        let betNumber = document.getElementById('betNumber');
+
+        betSlider.addEventListener('input', function (e) {
+            betNumber.value = e.target.value;
+        });
+
+        betNumber.addEventListener('input', function (e) {
+            betSlider.value = e.target.value;
+        });
+
+        document.getElementById('startButton').addEventListener('click', startGame);
+        document.getElementById('reset').addEventListener('click', resetGame);
+
+        updateBetLimits();
     });
 
-    betNumber.addEventListener('input', function (e) {
-        betSlider.value = e.target.value;
-    });
+    function startGame() {
+        let bet = parseInt(document.getElementById('betNumber').value);
+        if (isNaN(bet) || playerJack < bet || bet < 10) {
+            alert('Invalid bet!');
+            return;
+        }
 
-    document.getElementById('startButton').addEventListener('click', startGame); 
-    document.getElementById('reset').addEventListener('click', resetGame);
-
-    updateBetLimits(); 
-});
-
-function startGame() {
-    let bet = parseInt(document.getElementById('betNumber').value);
-    if (isNaN(bet) || playerJack < bet || bet < 10) {
-        alert('Invalid bet!');
-        return;
+        playerJack -= bet;
+        updateJackDisplay();
+        document.getElementById('playerArea').classList.remove('hidden');
+        document.getElementById('startButton').setAttribute('disabled', true); // Deaktivieren Sie den Start-Button nach dem Start.
     }
-
-    playerJack -= bet;
-    updateJackDisplay();
-    document.getElementById('playerArea').classList.remove('hidden');
-    document.getElementById('startButton').classList.add('hidden');
-}
 
 function rollDice() {
     let roll = Math.floor(Math.random() * 100) + 1;
