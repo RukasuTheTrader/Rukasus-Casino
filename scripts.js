@@ -22,8 +22,9 @@ function startGame() {
         return;
     }
     playerJack -= bet; // Bet is deducted at the start of the game.
-    updateJackDisplay(); // Neu hinzugefügte Zeile
-    document.getElementById('playerArea').classList.remove('hidden');
+    updateJackDisplay();
+    document.getElementById('playerArea').classList.remove('hidden'); // Show roll and hold buttons
+    document.getElementById('startButton').classList.add('hidden'); // Hide the start button
 }
 
 function rollDice() {
@@ -63,6 +64,7 @@ function resetGame() {
     document.getElementById('reset').classList.add('hidden');
     document.getElementById('playerArea').classList.add('hidden');
     document.getElementById('hostArea').classList.add('hidden');
+    document.getElementById('startButton').classList.remove('hidden'); // Show the start button
     playerScore = 0;
     hostScore = 0;
     document.getElementById('playerScore').innerText = '0';
