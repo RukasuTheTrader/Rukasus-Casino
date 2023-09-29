@@ -19,9 +19,12 @@ function loadGame(gameId) {
 }
 
 function startGame() {
+    let betSlider = document.getElementById('bet'); // Zugriff auf den Slider
+    betSlider.min = 10; // Setzen des minimalen Wertes
+    betSlider.max = playerJack; // Setzen des maximalen Wertes
     let bet = parseInt(document.getElementById('betNumber').value);
-    if (playerJack < bet) {
-        alert('Insufficient Jacks!');
+    if (playerJack < bet || bet < 10) { // Überprüfung ob der Einsatz gültig ist
+        alert('Invalid bet!');
         return;
     }
     playerJack -= bet;
@@ -75,5 +78,9 @@ function resetGame() {
 }
 
 function updateJackDisplay() {
-    document.getElementById('jackAmount').innerText = playerJack.toLocaleString('de-DE');
+    document.getElementById('jackAmount').innerText = playerJack.toLocaleString('en-US');
+    let betSlider = document.getElementById('bet'); // Zugriff auf den Slider
+    betSlider.max = playerJack; // Aktualisierung des maximalen Wertes des Sliders
+    if (playerJack < 10) betSlider.disabled = true; // Deaktivieren des Sliders, wenn der Spieler weniger als 10 Jack hat
+    else betSlider.disabled = false; // Aktivieren des Sliders, wenn der Spieler 10 oder mehr Jack hat
 }
