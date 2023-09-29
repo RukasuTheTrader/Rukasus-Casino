@@ -75,5 +75,5 @@ function resetGame() {
 }
 
 function updateJackDisplay() {
-    document.getElementById('jackAmount').innerText = playerJack.toString();
+    document.getElementById('jackAmount').innerText = playerJack.toLocaleString('de-DE');
 }
