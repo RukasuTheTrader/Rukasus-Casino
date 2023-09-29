@@ -1,52 +1,38 @@
 body {
-    background-image: url('./casino_background.avif');
+    background-image: url('casino background.avif');
     background-size: cover;
-    color: white;
+    background-repeat: no-repeat;
     font-family: 'Arial', sans-serif;
-    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
-header {
-    padding: 1em;
-    background-color: rgba(0,0,0,0.7);
+.container {
+    width: 80%;
+    margin: auto;
 }
 
-nav#game-nav ul {
+#gameList ul {
     list-style-type: none;
     padding: 0;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    overflow-y: scroll;
 }
 
-nav#game-nav ul li {
-    margin: 0.5em 0;
-    padding: 0.5em;
+#gameList ul li {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
 }
 
-nav#game-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-main {
-    margin-left: 220px;
+.game {
+    display: none;
 }
 
 #diceJack {
-    width: 300px;
-    margin: auto;
-    background-color: rgba(0,0,0,0.7);
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px white;
+    display: block;
 }
 
-button {
-    display: block;
-    margin: 0.5em 0;
+.hidden {
+    display: none;
 }
