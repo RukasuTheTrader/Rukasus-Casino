@@ -22,6 +22,7 @@ function startGame() {
         return;
     }
     playerJack -= bet; // Bet is deducted at the start of the game.
+    updateJackDisplay(); // Neu hinzugefügte Zeile
     document.getElementById('playerArea').classList.remove('hidden');
 }
 
@@ -54,6 +55,7 @@ function endGame(playerWins) {
     document.getElementById('reset').classList.remove('hidden');
     let bet = parseInt(document.getElementById('betNumber').value);
     if (playerWins) playerJack += bet * 2; // If player wins, he gets double the bet.
+    updateJackDisplay(); // Neu hinzugefügte Zeile
     alert(playerWins ? 'You win!' : 'You lose!');
 }
 
@@ -65,4 +67,8 @@ function resetGame() {
     hostScore = 0;
     document.getElementById('playerScore').innerText = '0';
     document.getElementById('hostScore').innerText = '0';
+}
+
+function updateJackDisplay() {
+    document.getElementById('jackAmount').innerText = playerJack.toString();
 }
