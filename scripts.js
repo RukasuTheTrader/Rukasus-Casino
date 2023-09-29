@@ -30,10 +30,6 @@ function startGame() {
     document.getElementById('startButton').classList.add('hidden');
 }
 
-// Der Rest des Codes bleibt unverändert
-
-}
-
 function rollDice() {
     let roll = Math.floor(Math.random() * 100) + 1;
     if (roll <= 4) {
