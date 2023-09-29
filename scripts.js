@@ -16,6 +16,12 @@ function loadGame(gameId) {
 }
 
 function startGame() {
+    let bet = parseInt(document.getElementById('betNumber').value);
+    if (playerJack < bet) {
+        alert('Insufficient Jacks!');
+        return;
+    }
+    playerJack -= bet; // Bet is deducted at the start of the game.
     document.getElementById('playerArea').classList.remove('hidden');
 }
 
@@ -47,9 +53,8 @@ function hold() {
 function endGame(playerWins) {
     document.getElementById('reset').classList.remove('hidden');
     let bet = parseInt(document.getElementById('betNumber').value);
-    if (playerWins) playerJack += bet;
-    else playerJack -= bet;
-    alert(playerWins ? 'Du gewinnst!' : 'Du verlierst!');
+    if (playerWins) playerJack += bet * 2; // If player wins, he gets double the bet.
+    alert(playerWins ? 'You win!' : 'You lose!');
 }
 
 function resetGame() {
